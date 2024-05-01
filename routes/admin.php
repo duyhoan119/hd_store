@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
+use GuzzleHttp\Promise\Create;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,10 +24,10 @@ Route::prefix('/category')->group(function(){
     Route::get('/edit/{id}',[CategoryController::class,'show'])->name('edit_category');
 });
 
-Route::prefix('/product')->group(function(){
-    Route::get('/',[ProductController::class ,'index'])->name('products');
-    Route::post('/',[ProductController::class ,'create'])->name('create_product');
-    Route::view('/create','admin.category.create')->name('create_product_view');
-    Route::post('/edit/{id}',[ProductController::class ,'update'])->name('save_product');
-    Route::get('/edit/{id}',[ProductController::class,'show'])->name('edit_product');
+Route::prefix('/product')->controller(ProductController::class )->group(function(){
+    Route::get('/','index')->name('products');
+    Route::get('/create','create')->name('create_product_view');
+    Route::post('/','store')->name('create_product');
+    Route::post('/edit/{id}' ,'update')->name('save_product');
+    Route::get('/edit/{id}','show')->name('edit_product');
 });

@@ -58,10 +58,11 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(CategoryRequest $data, int $id)
+    public function update(CategoryRequest $data,int $id)
     {
         $updateData = $data->validated();
-        if (category::find($id)->update($updateData)) {
+        $category = category::find($id);
+        if ($category->update($updateData)) {
             return redirect(route('categories', [true, 'mes' => 'updated success']));
         }
         return redirect(route('categories', [false, 'update falsed']));
@@ -72,7 +73,7 @@ class CategoryController extends Controller
      */
     public function destroy(int $id)
     {
-        $category = category::find($id);
+        $category= category::find($id);
         if ($category) {
             $category->delete();
             return ['mes' => 'delete success'];

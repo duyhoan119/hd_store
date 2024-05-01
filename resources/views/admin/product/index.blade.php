@@ -23,7 +23,10 @@
                 @foreach ($products as $item)
                     <tr class="border-b border-solid py-3">
                         <td>
-                            <img src="{{ asset(`$item->image`) }}" alt="">
+                           @if ($item->image!=null)
+                                <img src="{{ asset(`$item->image`) }}" alt="">
+                           @endif
+
                         </td>
                         <td>
                             <a href="#">{{ $item->name }}</a>

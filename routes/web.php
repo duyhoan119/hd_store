@@ -19,4 +19,8 @@ Route::prefix('contact')->controller(ContactController::class)->group(function()
     Route::get('/getall','index');
 });
 
+Route::prefix('product')->controller(ProductController::class)->group(function(){
+    Route::get('{id}/{a?}','show')->name('show_detail');
+});
+
 Route::get('/',[HomeController::class,'index'])->name('home');

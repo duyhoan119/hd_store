@@ -25,7 +25,7 @@
                     <label class="text-lg font-semibold text-gray-200"  for="content">Content</label>
                     <textarea class="border rounded-md px-2 py-1 w-full" type="text" name="content" id="content"></textarea>
                 </div>
-                <button class="bg-white rounded-md px-3 text-cyan-500 text-lg font-semibold" type="button">Submit</button>
+                <button class="bg-white rounded-md px-3 text-cyan-500 text-lg font-semibold hover:text-cyan-700" type="button">Submit</button>
             </form>
        </div>
     </div>

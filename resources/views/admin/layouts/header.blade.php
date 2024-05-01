@@ -3,7 +3,7 @@
         HD STORE ADMIN
     </a>
     <div class="flex space-x-4">
-        <a href="#" >Back to home</a>
+        <a href="{{ route('home') }}" >Back to home</a>
         <a href="#" >login</a>
         <a href="#" >logout</a>
     </div>
