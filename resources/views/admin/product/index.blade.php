@@ -22,9 +22,9 @@
 
                 @foreach ($products as $item)
                     <tr class="border-b border-solid py-3">
-                        <td>
-                           @if ($item->image!=null)
-                                <img src="{{ asset(`$item->image`) }}" alt="">
+                        <td class="flex items-center justify-center">
+                           @if ($item->image!== '')
+                                <img class="w-5 h-5" src="{{ asset($item->image) }}" alt="">
                            @endif
 
                         </td>

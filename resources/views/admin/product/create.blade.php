@@ -4,7 +4,7 @@
     <div>
         <div class="rounded-md relative">
             <h2 class="text-2xl text-center font-semibold">Add new product</h2>
-            <form class="space-y-2" method="POST" action="{{ route('create_product') }}">
+            <form class="space-y-2" method="POST" enctype="multipart/form-data" action="{{ route('create_product') }}">
                 @csrf
                 <label for="name" class="text-black font-semibold">Name product</label>
                 <input id="name" name="name" type="text" class="border rounded-md w-full px-2">

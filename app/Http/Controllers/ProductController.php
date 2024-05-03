@@ -11,33 +11,34 @@ class ProductController extends Controller
     public function index()
     {
         $products = product::query()->with('category')->paginate(10);
-        return view('admin.product.index',['products'=>$products]);
+        return view('admin.product.index', ['products' => $products]);
     }
 
     public function create()
     {
         $categories = $this->getCate();
-        return view('admin.product.create',['categories'=>$categories]);
+        return view('admin.product.create', ['categories' => $categories]);
     }
 
     public function store(Request $request)
     {
         $data = $request->all();
-        if (product::query()->create($data)) {
+        $data['image'] = $this->storeImage($request);
 
+        if (product::query()->create($data)) {
             return redirect(route('products', [true, 'mes' => 'created success']));
         }
         return redirect(route('products', [false, 'created falsed']));
     }
 
-    public function show(int $id,?int $a=0)
+    public function show(int $id, ?int $a = 0)
     {
         $product = product::find($id);
         $categories = $this->getCate();
-       if($a!==0){
-            return view('client.product.detail', ['categories'=>$categories,'product' => $product]);
-       }
-       return view('admin.product.edit', ['categories'=>$categories,'product' => $product]);
+        if ($a !== 0) {
+            return view('client.product.detail', ['categories' => $categories, 'product' => $product]);
+        }
+        return view('admin.product.edit', ['categories' => $categories, 'product' => $product]);
     }
 
     public function edit(product $product)
@@ -65,7 +66,15 @@ class ProductController extends Controller
         return ['mes' => 'delete falsed'];
     }
 
-    protected function getCate(){
+    protected function getCate()
+    {
         return  category::query()->get();
+    }
+
+    protected function storeImage(Request $request)
+    {
+        $path = $request->file('image')->store('images');
+        $path = 'images/'. $path;
+        return substr($path, strlen('images/'));
     }
 }
