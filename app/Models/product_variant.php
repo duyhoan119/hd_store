@@ -11,8 +11,10 @@ class product_variant extends Model
 
     protected $fillable = [
         'product_id',
+        'shelves_id',
         'name',
         'image',
-        'price'
-    ];
+        'price',
+        'quantity'
+    ]; 
 }

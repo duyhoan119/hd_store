@@ -12,10 +12,15 @@ class product extends Model
     protected $fillable = [
         'category_id',
         'name',
-        'image'
+        'image',
+        'price'
     ];
 
     public function category(){
         return $this->hasOne(category::class,'id','category_id');
+    }
+
+    public function variant(){
+        return $this->hasMany(product_variant::class);
     }
 }
