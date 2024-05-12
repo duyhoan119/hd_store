@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ShopingCartController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,6 +21,10 @@ Route::prefix('category')->controller(CategoryController::class)->group(function
     Route::delete('{id}','destroy');
 });
 Route::prefix('product')->controller(ProductController::class)->group(function(){
+    Route::delete('{id}','destroy');
+});
+Route::prefix('/cart')->controller(ShopingCartController::class)->group(function(){
+    Route::post('','store'); 
     Route::delete('{id}','destroy');
 });
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

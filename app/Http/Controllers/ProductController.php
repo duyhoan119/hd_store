@@ -34,11 +34,10 @@ class ProductController extends Controller
     public function show(int $id, ?int $a = 0)
     {
         $product = product::query()->with('variant')->find($id);
-        $categories = $this->getCate();
         if ($a !== 0) {
-            return view('client.product.detail', ['categories' => $categories, 'product' => $product]);
+            return view('client.product.detail', ['product' => $product]);
         }
-        return view('admin.product.edit', ['categories' => $categories, 'product' => $product]);
+        return view('admin.product.edit', ['product' => $product]);
     }
 
     public function edit(product $product)

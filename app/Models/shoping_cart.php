@@ -9,9 +9,15 @@ class shoping_cart extends Model
 {
     use HasFactory;
 
+    public $table = 'shoping_cart';
     protected $fillable = [
         'variant_id',
         'quantity_order',
-        'price'
+        'user_id',
+        'price' 
     ];
+
+    public function product(){
+        return $this->belongsTo(product_variant::class,'variant_id','id');
+    }
 }

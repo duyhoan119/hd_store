@@ -45,7 +45,8 @@
 @section('js')
     <script>
         function handerDelete(id) {
-            let url = 'http://127.0.0.1:8000/api/category/' + id;
+
+            let url = location.origin+'/api/category/' + id;
             axios.delete(url).then(res => {
                 if (res.status === 200) {
                     alert('delete success');
