@@ -8,10 +8,14 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    public function index()
+    public function index(?int $a = 0)
     {
         $products = product::query()->with('category')->paginate(10);
-        return view('admin.product.index', ['products' => $products]);
+        if ($a !== 1) { 
+            return view('admin.product.index', ['products' => $products]);
+        }
+        $categories = $this->getCate();
+        return view('Client.product.index',['categories'=>$categories,'products' => $products]);
     }
 
     public function create()

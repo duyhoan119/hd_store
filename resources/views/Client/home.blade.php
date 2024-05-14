@@ -7,7 +7,6 @@
     <div>
         @include('client.layouts.nav')
     </div>
-    <div>
     <div class="grid grid-cols-12 gap-4">
         @foreach ($products as $item)
             <a href="{{ route('show_detail', ['id'=>$item->id,'a'=>1]) }}" class="col-span-4 group">

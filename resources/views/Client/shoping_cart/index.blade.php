@@ -25,7 +25,7 @@
                     <td class="text-center col-span-1 flex justify-center items-center">{{$item->quantity_order}}</td>
                     <td class="text-center col-span-1 flex justify-center items-center">{{$item->price*$item->quantity_order}}</td>
                     <td class="text-center col-span-1 flex justify-center items-center">
-                        <button onclick="handerDelete({{$item->id}})" type="button">Xóa</button>
+                        <button onclick="handerDelete({{$item->id}})" type="button">Delete</button>
                     </td>
                 </tr>
                 @endforeach

@@ -21,7 +21,9 @@ Route::prefix('contact')->controller(ContactController::class)->group(function()
 });
 
 Route::prefix('product')->controller(ProductController::class)->group(function(){
+    Route::get('/{a?}','index')->name('list');
     Route::get('{id}/{a?}','show')->name('show_detail');
 });
+Route::view('/contact','Client.contact.index')->name('contact');
 Route::get('/',[HomeController::class,'index'])->name('home');
 Route::get('cart/{user_id}',[ShopingCartController::class,'index'])->name('cart');
