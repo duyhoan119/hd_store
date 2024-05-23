@@ -71,7 +71,7 @@ class ProductController extends Controller
 
     protected function getCate()
     {
-        return  category::query()->get();
+        return category::query()->where('status','0')->get();
     }
 
     protected function storeImage(Request $request)

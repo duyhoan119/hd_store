@@ -44,7 +44,7 @@
                 </a>
             </div>
             <div class="flex-col items-center">
-                <p class="ml-30 text-gray-200">SĐT: 0977573628</p>
+                <p class="ml-30 text-gray-200">Phone: 0977573628</p>
                 <p class="ml-30 text-gray-200">Email: duyhoan3721@gmail.com</p>
             </div>
        </div>

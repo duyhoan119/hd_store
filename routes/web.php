@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ShopingCartController;
 use Illuminate\Support\Facades\Route;
@@ -24,6 +25,11 @@ Route::prefix('product')->controller(ProductController::class)->group(function()
     Route::get('/{a?}','index')->name('list');
     Route::get('{id}/{a?}','show')->name('show_detail');
 });
+Route::prefix('news')->controller(NewsController::class)->group(function(){
+    Route::get('/{a?}','index')->name('news');
+    Route::get('{id}/{a?}','show')->name('new');
+});
 Route::view('/contact','Client.contact.index')->name('contact');
+Route::view('/login','Client.login.login')->name('login');
 Route::get('/',[HomeController::class,'index'])->name('home');
 Route::get('cart/{user_id}',[ShopingCartController::class,'index'])->name('cart');

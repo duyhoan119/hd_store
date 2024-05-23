@@ -37,7 +37,7 @@
     </div>
    @else
        <div>
-            <h1 class="text-center text-xl font-semibold" >Bạn chưa có đơn hàng nào. <a href="{{ route('home') }}">Đến trang mua sắm</a>!</h1>
+            <h1 class="text-center text-xl font-semibold" >You don't have any orders yet. <a href="{{ route('home') }}">Go to shopping page</a>!</h1>
        </div>
    @endif
 @endsection
