@@ -69,6 +69,12 @@ class ProductController extends Controller
         return ['mes' => 'delete falsed'];
     }
 
+    public function findByCate(int $category_id){
+        $products = product::query()->where('category_id',$category_id)->paginate(10);
+        $categories = $this->getCate();
+        return view('Client.product.index',['categories'=>$categories,'products' => $products]);
+    }
+
     protected function getCate()
     {
         return category::query()->where('status','0')->get();

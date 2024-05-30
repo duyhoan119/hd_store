@@ -24,12 +24,14 @@ Route::prefix('contact')->controller(ContactController::class)->group(function()
 Route::prefix('product')->controller(ProductController::class)->group(function(){
     Route::get('/{a?}','index')->name('list');
     Route::get('{id}/{a?}','show')->name('show_detail');
+    Route::get('{id}','findByCate')->name('find_by_cate');
 });
 Route::prefix('news')->controller(NewsController::class)->group(function(){
     Route::get('/{a?}','index')->name('news');
     Route::get('{id}/{a?}','show')->name('new');
+    Route::get('{id}','findByCate')->name('find_by_cate_news');
 });
 Route::view('/contact','Client.contact.index')->name('contact');
-Route::view('/login','Client.login.login')->name('login');
+Route::view('/login','Client.login.index')->name('login');
 Route::get('/',[HomeController::class,'index'])->name('home');
 Route::get('cart/{user_id}',[ShopingCartController::class,'index'])->name('cart');

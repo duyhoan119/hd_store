@@ -69,6 +69,12 @@ class NewsController extends Controller
         //
     }
 
+    public function findByCate(int $category_id){
+        $news = news::query()->select('id','title','image')->where('category_id',$category_id)->get();
+        $categories = $this->getCate();
+        return view('Client.news.index',['categories'=>$categories,'news'=>$news]);
+    }
+
     protected function generateSlug(string $value){
         return Str::slug($value);
     }
