@@ -29,12 +29,12 @@ class ShopingCartController extends Controller
     public function destroy($id){
         $cart = shoping_cart::find($id)->first();
         if(isset($cart)){
-           if (shoping_cart::query()->delete($id)) {
+           if ($cart->delete()) {
                 $this->updateQuantity($cart->variant_id,$cart->quantity_order,'plus');
                 return ['status'=>200,'messages'=>'Delete successfully'];
             }
         }
-        return ['status'=>403,'messages'=> "delete falses"];
+        return ['status'=>403,'messages'=> "delete falsed"];
     }
 
     protected function updateQuantity(int $id, int $quantity,$action = 'plus'){
