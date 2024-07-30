@@ -9,7 +9,7 @@
             <a href="{{ route('show_detail', ['id'=>$item->id,'a'=>1]) }}" class="col-span-4 group">
                 <div class="border-2 border-solid rounded-md py-3 space-y-3">
                     <div class="aspect-x-4 aspect-y-5 ">
-                        <img class="w-full h-full group-hover:scale-105 transition object-cover" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxCxnFfEgJWeou4r_iGaNJUEg3CflXWe04UmqlfUg4Ue4D5RBwO7_KNbsGfXLpammhAWs&usqp=CAU" alt="">
+                        <img class="w-full h-full group-hover:scale-105 transition object-cover" src="{{ asset($item->image) }}" alt="">
                     </div>
                     <p class="text-lg text-center group-hover:text-cyan-500 group-hover:text-xl transition">{{$item->name}}</p>
                 </div>

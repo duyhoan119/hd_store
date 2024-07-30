@@ -10,11 +10,16 @@
             <a class="text-lg font-semibold hover:text-xl transition text-gray-200" href="{{ route('contact') }}" >Contact</a>
         </div>
         <div class="col-span-2 right-0 flex justify-end items-center space-x-4">
-            <a class="text-lg font-semibold hover:text-xl transition text-gray-200" href="{{ route('cart', ['user_id'=>1]) }}">Cart</a>
-            <div>
-                <a class="border bg-yellow-300 rounded-md text-lg font-semibold transition text-cyan-500 px-2" href="{{ route('login')}}">Login</a>
-                <a class="border bg-yellow-300 rounded-md text-lg font-semibold transition text-cyan-500 px-2" href="{{ route('login')}}">Logout</a>
-            </div>
+            <a class="text-lg font-semibold hover:text-xl transition text-gray-200" href="{{ route('cart', [Auth::id() !==null?Auth::id():1] ) }}">Cart</a>
+            @if (Auth::id()!==null)
+                <div>
+                    <a class="border bg-yellow-300 rounded-md text-lg font-semibold transition text-cyan-500 px-2" href="{{ route('log_out')}}">Logout</a>
+                </div>
+                @else
+                <div>
+                    <a class="border bg-yellow-300 rounded-md text-lg font-semibold transition text-cyan-500 px-2" href="{{ route('login')}}">Login</a>
+                </div>
+            @endif
         </div>
     </div>
 </div>

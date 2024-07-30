@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\EmailController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ProductController;
@@ -18,24 +19,28 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::prefix('contact')->controller(ContactController::class)->group(function(){
-    Route::get('/getall','index');
-});
-
-Route::prefix('product')->controller(ProductController::class)->group(function(){
-    Route::get('/{a?}','index')->name('list');
-    Route::get('{id}/{a?}','show')->name('show_detail');
-    Route::get('{id}','findByCate')->name('find_by_cate');
-});
-Route::prefix('news')->controller(NewsController::class)->group(function(){
-    Route::get('/{a?}','index')->name('news');
-    Route::get('{id}/{a?}','show')->name('new');
-    Route::get('{id}','findByCate')->name('find_by_cate_news');
+Route::prefix('')->middleware('auth')->group(function(){
+    Route::prefix('contact')->controller(ContactController::class)->group(function(){
+        Route::get('/getall','index');
+    });
+    Route::prefix('product')->controller(ProductController::class)->group(function(){
+        Route::get('/{a?}','index')->name('list');
+        Route::get('{id}/{a?}','show')->name('show_detail');
+        Route::get('{id}','findByCate')->name('find_by_cate');
+    });
+    Route::prefix('news')->controller(NewsController::class)->group(function(){
+        Route::get('/{a?}','index')->name('news');
+        Route::get('{id}/{a?}','show')->name('new');
+        Route::get('{id}','findByCate')->name('find_by_cate_news');
+    });
+    Route::get('cart/{user_id}',[ShopingCartController::class,'index'])->name('cart');
 });
 Route::view('/contact','Client.contact.index')->name('contact');
 Route::get('/',[HomeController::class,'index'])->name('home');
-Route::get('cart/{user_id}',[ShopingCartController::class,'index'])->name('cart');
 Route::view('/login','Client.login.index')->name('login');
 Route::post('/register',[UserController::class,'store'])->name('register');
 Route::post('/sign-in',[UserController::class,'login'])->name('sign_in');
-Route::get('cart/{user_id}',[ShopingCartController::class,'index'])->name('cart');
+Route::get('/log-out',[UserController::class,'log_out'])->name('log_out');
+
+Route::get('/test-forgot-pass',[EmailController::class,'sendForgotPassEmail']);
+

@@ -39,7 +39,8 @@ class ProductController extends Controller
     {
         $product = product::query()->with('variant')->find($id);
         if ($a !== 0) {
-            return view('client.product.detail', ['product' => $product]);
+            $products = product::query()->where('category_id',$product->category_id)->paginate(4);
+            return view('client.product.detail', ['product' => $product,'products'=>$products]);
         }
         return view('admin.product.edit', ['product' => $product]);
     }

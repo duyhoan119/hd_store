@@ -16,6 +16,7 @@
                     </div>
                     <button class="border-cyan-50 rounded-md mx-auto block py-2 px-8 text-xl font-semibold bg-white" type="submit">Login</button>
                 </form>
+                <a href="#" class="text-base text-center font-semibold">Forgot your password !</a>
                 <p class="text-base text-center font-semibold">You don't have account. <span onclick="change_view('register')">Go to register !</span></p>
             </div>
         </div>
